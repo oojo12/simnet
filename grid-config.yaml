@@ -1,6 +1,7 @@
 compute:
 
   train:
+    name: electric-sheep
     instance: g4dn.12xlarge
     framework: lightning
     dependency_file_info:
