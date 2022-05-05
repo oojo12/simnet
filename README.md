@@ -67,6 +67,7 @@ validation you need to replicate our small objects results.
 cd $SIMNET_REPO
 wget https://tri-robotics-public.s3.amazonaws.com/github/simnet/datasets/simnet2021a.tar -P datasets
 tar xf datasets/simnet2021a.tar -C datasets
+grid datastore create ./datasets/simnet2021a
 ```
 
 ### Train and Validate
