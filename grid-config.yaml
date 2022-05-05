@@ -1,0 +1,15 @@
+compute:
+
+  train:
+    instance: g4dn.12xlarge
+    framework: lightning
+    dependency_file_info:
+      package_manager: pip
+      path: frozen_requirements.txt
+    # Actions need to be passed as one command
+    # per line.
+    actions:
+      on_build_start:
+        - apt-get update
+        - apt-get install ffmpeg libsm6 libxext6 -y
+
