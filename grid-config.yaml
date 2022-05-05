@@ -4,6 +4,7 @@ compute:
     name: electric-sheep
     instance: g4dn.12xlarge
     framework: lightning
+    datastore_name: simnet2021a         # Datastore name to use
     dependency_file_info:
       package_manager: pip
       path: frozen_requirements.txt
@@ -12,7 +13,7 @@ compute:
     actions:
       on_build_start:
         - apt-get update
-        - apt-get install ffmpeg libsm6 libxext6 -y
+        - apt-get install ffmpeg libsm6 libxext6
 
 hyper_params:
   params:
