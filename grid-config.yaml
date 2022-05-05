@@ -5,6 +5,7 @@ compute:
     instance: g4dn.12xlarge
     framework: lightning
     datastore_name: simnet2021a         # Datastore name to use
+    datastore_version: 1
     dependency_file_info:
       package_manager: pip
       path: frozen_requirements.txt
