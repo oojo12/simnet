@@ -84,14 +84,30 @@ Full training run (requires 12GB GPU memory)
 ### Run with Grid
 ```
 grid datastore create ./datasets/simnet2021a
-grid run --name electric-sheep -- max_steps=4000 --dockerfile dockerfile \
-         --model_file=models/panoptic_net.py --localdir \
-         --model_name=res_fpn --output=ckpts --train_path=/datastores/simnet2021a/train?samples=400 \
-	     --train_batch_size=1 --train_num_workers=4 --val_path=/datastores/simnet2021a/train?samples=1 \
-         --val_batch_size=1 --val_num_workers=4 --optim_learning_rate=0.0006 --optim_momentum=0.9 \
-	     --optim_weight_decay=1e-4 --optim_poly_exp=0.9 --optim_warmup_epochs=1 --loss_seg_mult=1.0 \
-         --loss_depth_mult=1.0 --loss_depth_refine_mult=1.0 --loss_vertex_mult=0.1 \
-         --loss_rotation_mult=0.1 --loss_heatmap_mult=100.0 --loss_z_centroid_mult=0.1 \
+grid run --name electric-sheep --config grid-config.yaml \
+         -- \
+	 net_train.py --max_steps=4000 \
+         --model_file=models/panoptic_net.py \
+         --model_name=res_fpn \
+	 --output=ckpts \
+	 --train_path=/datastores/simnet2021a/train?samples=400 \
+	 --train_batch_size=1 \
+	 --train_num_workers=4 \
+	 --val_path=/datastores/simnet2021a/train?samples=1 \
+         --val_batch_size=1 \
+	 --val_num_workers=4 \
+	 --optim_learning_rate=0.0006 \
+	 --optim_momentum=0.9 \
+	 --optim_weight_decay=1e-4 \
+	 --optim_poly_exp=0.9 \
+	 --optim_warmup_epochs=1 \
+	 --loss_seg_mult=1.0 \
+         --loss_depth_mult=1.0 
+	 --loss_depth_refine_mult=1.0 
+	 --loss_vertex_mult=0.1 \
+         --loss_rotation_mult=0.1 \
+	 --loss_heatmap_mult=100.0 \
+	 --loss_z_centroid_mult=0.1 \
          --wandb_name=simnet-github-overfit
 ```
 #### Results
